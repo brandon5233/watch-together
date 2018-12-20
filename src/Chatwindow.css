@@ -7,3 +7,12 @@
     height: 80%;
     margin-right: 1%;
 }
+
+.chathistory{
+    height: 70%;
+    border: 1px solid black;
+}
+
+.chattext{
+    text-align: left;
+}
