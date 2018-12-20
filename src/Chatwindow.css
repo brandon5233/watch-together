@@ -1,0 +1,9 @@
+.Chatwindow{
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+    float: right;
+    width: 40%;
+    height: 80%;
+    margin-right: 1%;
+}
