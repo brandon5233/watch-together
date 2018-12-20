@@ -19,13 +19,16 @@ class Textbox extends Component{
     handleSubmit(event){
         this.props.addtext(this.state.inputvalue);
         event.preventDefault();
+        this.setState({
+            inputvalue:""
+        });
     }
 
     render(){
         return(
             <div className="textwrapper">
                 <form onSubmit={this.handleSubmit}>
-                    <input className="inputtext" type="text" onChange={this.handleChange}/>
+                    <input className="inputtext" type="text" value ={this.state.inputvalue} onChange={this.handleChange}/>
                     <input type="submit" value="Send"/>
                 </form>
             </div>
@@ -43,8 +46,6 @@ function Textview(props){
         </div>
     );
 }
-
-
 
 class Chatwindow extends Component{
     constructor(props){

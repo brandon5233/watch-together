@@ -11,6 +11,7 @@
 .chathistory{
     height: 70%;
     border: 1px solid black;
+    overflow: scroll;
 }
 
 .chattext{
