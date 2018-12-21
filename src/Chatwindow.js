@@ -44,7 +44,7 @@ class Textbox extends Component{
         return(
             <div className="textwrapper">
                 <form onSubmit={this.handleSubmit}>
-                    <input className="inputtext" type="text" value ={this.state.inputvalue} onChange={this.handleChange}/>
+                    <input placeholder="Type a message" className="inputtext" type="text" value ={this.state.inputvalue} onChange={this.handleChange}/>
                     <Button disabled={this.state.isnull} style={style} variant="contained" className="button" type="submit" color='primary' >
                         Send
                     </Button>
