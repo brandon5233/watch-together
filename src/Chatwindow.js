@@ -61,7 +61,7 @@ function Textview(props){
         <div className="chathistory">
             
             {
-                arr.reverse().map((value, index) =>  <p key={index} className="chattext">{value}</p>)
+    arr.reverse().map((value, index) =>  <p key={index} className="chattext">{props.username+":\t"}{value}</p>)
             }
         </div>
     );
@@ -73,14 +73,20 @@ class Chatwindow extends Component{
         this.addtextfn = this.addtextfn.bind(this);
         this.state ={
             chathistory: [],
+            name: "Brandon",
+            lastname: "Rozario",
+            username: "brandon5233"
         };
     }
     render(){
         return(
             <div className="Chatwindow">
                 <p> chat window goes here </p>
-                <Textview chathistory={this.state.chathistory} />
-                <Textbox addtext={this.addtextfn}/>
+                <Textview 
+                    chathistory={this.state.chathistory} 
+                    timestamp={new Date()} 
+                    username={this.state.username}/>
+                <Textbox addtext={this.addtextfn} />
             </div>
         );
     }
