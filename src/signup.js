@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {FirebaseContext} from './firebase'
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
 
 
 class SignUpPage extends Component{
+   
     render(){
         return(
             <div>
@@ -36,15 +37,10 @@ class SignUpForm extends Component{
 
     handleChange = event => {
         this.setState({[event.target.name] : event.target.value});
-        console.log("handlechange: ")
-        console.log(this.state);
     }
 
     handleSubmit = event => {
         const {username, email, password1} = this.state;
-
-        console.log("onSubmit")
-        console.log(this.state);
 
         this.props.firebase
         .doCreateUserWithEmailAndPassword(email, password1)
@@ -54,11 +50,8 @@ class SignUpForm extends Component{
           })
         .catch(error => {
             this.setState({ error });
-            console.log(this.state);
           });
-        console.log("prevent default");
         event.preventDefault();
-        console.log(this.state);
     }
 
     render(){
