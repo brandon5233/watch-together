@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import {FirebaseContext} from './firebase'
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
-
+import './signup.css'
 
 class SignUpPage extends Component{
    
     render(){
         return(
-            <div>
-                <p>SignUpPage</p>
+            <div className="SignUpFormContainer">
                 <FirebaseContext.Consumer>
                 {firebase =><RoutableSignUpForm firebase={firebase}/>}
                 </FirebaseContext.Consumer>
@@ -36,11 +35,17 @@ class SignUpForm extends Component{
     }
 
     handleChange = event => {
-        this.setState({[event.target.name] : event.target.value});
+        this.setState({
+            [event.target.name] : event.target.value,
+            error : ''
+        });
+        console.log("state changed");
     }
 
     handleSubmit = event => {
         const {username, email, password1} = this.state;
+        console.log("data submitted");
+        console.log(username);
 
         this.props.firebase
         .doCreateUserWithEmailAndPassword(email, password1)
@@ -70,49 +75,51 @@ class SignUpForm extends Component{
         username === '';
 
         return(
+            <div className="SignUpForm">
+                <form onSubmit={this.handleSubmit}>
 
-            <form onSubmit={this.handleSubmit}>
+                <input
+                    name="username"
+                    value={username}
+                    onChange={this.handleChange}
+                    type="text"
+                    placeholder="Username"
+                />
 
-            <input
-                name="username"
-                value={username}
+                <br/>
+
+                <input
+                name="email"
+                value={email}
                 onChange={this.handleChange}
-                type="text"
-                placeholder="Username"
-            />
-        
-            <br/>
+                type="email"
+                placeholder="email"
+                />
+                <br/>
 
-            <input
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            type="text"
-            placeholder="email"
-            />
-            <br/>
+                <input
+                name="password1"
+                value={password1}
+                onChange={this.handleChange}
+                type="password"
+                placeholder="password"
+                />
+                <br/>
 
-            <input
-            name="password1"
-            value={password1}
-            onChange={this.handleChange}
-            type="password"
-            placeholder="password"
-            />
-            <br/>
+                <input
+                name="password2"
+                value={password2}
+                onChange={this.handleChange}
+                type="password"
+                placeholder="confirm password"
+                />
+                <br/>
+                <button disabled={isInvalid} type="submit">Sign Up</button>
 
-            <input
-            name="password2"
-            value={password2}
-            onChange={this.handleChange}
-            type="password"
-            placeholder="confirm password"
-            />
-            <br/>
-            <button disabled={isInvalid} type="submit">Sign Up</button>
-
-            {error && <p>{error.message}</p>}
-            </form>
+                {error && <p className="SignUpError">{error.message}</p>}
+                </form>
+              </div>
+            
         );
     }
 }

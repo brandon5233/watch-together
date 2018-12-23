@@ -1,0 +1,16 @@
+signup: need a cancel button
+        remove signup button from navbar
+        increase height of sign up form 
+        add text above form: Create an account, its free!
+        link to signin form above signup button
+
+signin errors need to be shorter/customized
+on signin:  display username in navbar
+            change sign in to signout
+            signout should log user out
+            check if user is actually signed in
+
+navbar: active link should change color
+change login/signup button color: gray text when disabled, white otherwise. 
+
+add footer out of page bounds

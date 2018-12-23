@@ -1,0 +1,24 @@
+.SignUpFormContainer{
+    background-color: #3b5998;
+    overflow: auto;
+    padding:20px 20px 10px 20px;
+}
+
+.SignUpForm input{
+    margin-top: 2px;
+}
+
+.SignUpForm button{
+    margin-top: 5px;
+}
+
+.SignUpForm input{
+    padding: 5px;
+}
+
+.SignUpError{
+    color: #bb000d;
+    text-decoration: bold;
+    margin:10px 0px 0px 0px;
+    padding: 0;
+}

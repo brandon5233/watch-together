@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import {FirebaseContext} from './firebase'
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
+import './signin.css'
+import SignUpPage from './signup';
+import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 function SignIn(props){
     return(
-        <div>
-            <p>SignIn Page</p>
+        <div className="SignInFormContainer"> 
             <FirebaseContext.Consumer>
                {firebase => <RoutableSignInForm firebase={firebase} />}
             </FirebaseContext.Consumer>
@@ -28,7 +32,10 @@ class SignInForm extends Component{
     }
 
     handleChange = event => {
-        this.setState({[event.target.name]:event.target.value});
+        this.setState({
+            [event.target.name]:event.target.value,
+            error : ''
+        });
     }
 
     handleSubmit = event => {
@@ -49,7 +56,7 @@ class SignInForm extends Component{
        const {email, password, error} = this.state;
        const isDisabled = email === "" || password.trim() ==="";
         return(
-            <div>
+            <div className="SignInForm">
                 <form onSubmit={this.handleSubmit}>
                     <input
                     type="email"
@@ -57,25 +64,25 @@ class SignInForm extends Component{
                     placeholder="Email"
                     onChange={this.handleChange}
                     />
-                    <br/>
-                    
+                
                     <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     onChange={this.handleChange}
                     />
-                    <br/>
 
                     <button
                     type="submit"
                     disabled={isDisabled}>
                     Login
                     </button>
-                    <br/>
-
-                    {error && <p>{error.message}</p>}
+                    {error && <p className="SignInError">{error.message}</p>}
                 </form>
+                <div className="signupInvitation">
+                    <h5 >Don't have an account?</h5>
+                    <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+                </div>
             </div>
         );
     }
