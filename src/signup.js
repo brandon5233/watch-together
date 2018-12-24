@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {FirebaseContext} from './firebase'
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
 import './signup.css'
 
@@ -59,6 +59,10 @@ class SignUpForm extends Component{
         event.preventDefault();
     }
 
+    goBack = () => {
+        this.props.history.push(ROUTES.LANDING);
+    }
+
     render(){
         const {
             username,
@@ -76,6 +80,12 @@ class SignUpForm extends Component{
 
         return(
             <div className="SignUpForm">
+
+                <div className="SignUpGreeting">
+                    <h2>Create a new Account!</h2>
+                    <h5>Its fast, easy, and Free!</h5>
+                </div>
+
                 <form onSubmit={this.handleSubmit}>
 
                 <input
@@ -114,7 +124,14 @@ class SignUpForm extends Component{
                 placeholder="confirm password"
                 />
                 <br/>
+                
+                <div className="SignInInvitation">
+                    <h5>Already have an account?</h5>
+                    <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+                </div>
+                <br/>
                 <button disabled={isInvalid} type="submit">Sign Up</button>
+                <button className="SignUpCancel" onClick={this.goBack}>Cancel</button>
 
                 {error && <p className="SignUpError">{error.message}</p>}
                 </form>

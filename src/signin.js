@@ -73,6 +73,7 @@ class SignInForm extends Component{
                     />
 
                     <button
+                    className="SignInButton"
                     type="submit"
                     disabled={isDisabled}>
                     Login
@@ -80,7 +81,7 @@ class SignInForm extends Component{
                     {error && <p className="SignInError">{error.message}</p>}
                 </form>
                 <div className="signupInvitation">
-                    <h5 >Don't have an account?</h5>
+                    <h5>Don't have an account?</h5>
                     <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
                 </div>
             </div>

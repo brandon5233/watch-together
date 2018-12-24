@@ -48,3 +48,18 @@
     margin:0;
     padding: 0;
 }
+
+.SignInButton:not([disabled]){
+    background-color: #06b106;
+    color: white;
+    margin-left: 10px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+
+.SignInButton:disabled{
+    margin-left: 10px;
+    padding: 7px;
+    border-radius: 5px;
+}
