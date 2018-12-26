@@ -39,13 +39,10 @@ class SignUpForm extends Component{
             [event.target.name] : event.target.value,
             error : ''
         });
-        console.log("state changed");
     }
 
     handleSubmit = event => {
         const {username, email, password1} = this.state;
-        console.log("data submitted");
-        console.log(username);
 
         this.props.firebase
         .doCreateUserWithEmailAndPassword(email, password1)
@@ -131,8 +128,15 @@ class SignUpForm extends Component{
                 </div>
                 <br/>
                 <button disabled={isInvalid} type="submit">Sign Up</button>
+            
+                {
+                /* 
+                Add a cancel button here possibly with redux
                 <button className="SignUpCancel" onClick={this.goBack}>Cancel</button>
-
+                 */ 
+                }
+                
+                
                 {error && <p className="SignUpError">{error.message}</p>}
                 </form>
               </div>
