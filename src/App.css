@@ -51,6 +51,7 @@ li{
   box-sizing: border-box;
 }
 
+
 .NavigationBar a{
   padding: 15px 0px;
   text-decoration: none;
@@ -58,6 +59,6 @@ li{
   color: white;
 }
 
-li a:hover{
+.NavigationBar li a:hover{
   background: #222;
 }

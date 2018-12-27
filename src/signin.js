@@ -3,16 +3,14 @@ import {FirebaseContext} from './firebase'
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
 import './signin.css'
-import SignUpPage from './signup';
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 function SignIn(props){
     return(
         <div className="SignInFormContainer"> 
             <FirebaseContext.Consumer>
-               {firebase => <RoutableSignInForm firebase={firebase} />}
+               {firebase => <RoutableSignInForm firebase={firebase} setUsername={props.setUsername} SignInToggle={props.SignInToggle}/>}
             </FirebaseContext.Consumer>
         </div>
     );
@@ -27,7 +25,6 @@ const INITIAL_STATE = {
 class SignInForm extends Component{
     constructor(props){
         super(props);
-
         this.state = {...INITIAL_STATE};
     }
 
@@ -44,6 +41,8 @@ class SignInForm extends Component{
         .dosignInWithEmailAndPassword(email, password)
         .then(authUser =>{
             this.setState({...INITIAL_STATE});
+            this.props.setUsername(email);
+            this.props.SignInToggle();
             this.props.history.push(ROUTES.LANDING);
         })
         .catch(error =>{

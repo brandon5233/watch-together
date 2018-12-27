@@ -1,0 +1,17 @@
+.SignOutContainer{
+    min-height: 30px;
+    background:#3b5998;
+    overflow: auto;
+    padding: 10px 50px 10px 10px;
+}
+
+.SignOutButtonContainer{
+    float: right;
+}
+
+.SignOutButton{
+    background-color: #06b106;
+    border-radius: 5px;
+    padding: 7px;
+}
+

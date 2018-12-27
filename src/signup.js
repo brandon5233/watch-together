@@ -85,16 +85,18 @@ class SignUpForm extends Component{
 
                 <form onSubmit={this.handleSubmit}>
 
-                <input
+                {/*
+                    <input
                     name="username"
                     value={username}
                     onChange={this.handleChange}
                     type="text"
                     placeholder="Username"
-                />
+                    />
+                    <br/>
+                */}
 
-                <br/>
-
+                
                 <input
                 name="email"
                 value={email}

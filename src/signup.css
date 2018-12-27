@@ -5,12 +5,14 @@
 }
 
 .SignUpForm{
-    float: right
+    float: right;
+    max-width: 300px;
+    text-align: center;
 }
 
 .SignUpGreeting, .SignUpGreeting h5, .SignUpGreeting h2{
     padding: 0px, 0px, 0px, 0px;
-    margin: 0px 0px 15px 0px;
+    margin: 0px 0px 7px 0px;
     color: white;
 }
 
@@ -36,8 +38,9 @@
     text-decoration: bold;
     margin:10px 0px 0px 0px;
     padding: 0;
+    max-width: inherit;
+    text-overflow: clip;
 }
-
 .SignInInvitation{
     margin:5px;
     margin-right: 10%;

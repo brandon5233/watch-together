@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navigation from './Navigation.js';
-import * as ROUTES from './constants/routes'
-
-
-
-
-
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      username: ''
+    }
+  }
+
+  setUsername = (newName) =>{
+    console.log("setting username to " + newName);
+    this.setState({
+      username: newName
+    });
+  }
     
   render() {
     return (
@@ -19,8 +26,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Router>
             <div>
-              <Navigation />
-              
+              <Navigation setUsername={this.setUsername} username={this.state.username}/>
             </div>
           </Router>
         </div>
