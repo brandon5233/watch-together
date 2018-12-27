@@ -7,20 +7,20 @@ import Navigation from './Navigation.js';
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       username: ''
     }
   }
 
-  setUsername = (newName) =>{
+  setUsername = (newName) => {
     console.log("setting username to " + newName);
     this.setState({
       username: newName
     });
   }
-    
+
   render() {
     return (
       <div className="App">
@@ -28,22 +28,21 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Router>
             <div>
-              <Navigation setUsername={this.setUsername} username={this.state.username}/>
+              <Navigation setUsername={this.setUsername} username={this.state.username} />
             </div>
           </Router>
         </div>
-      
-      <div className="App-header">
+
+        <div className="App-header">
           <h2>Welcome to WatchTogether</h2>
-          <h4>A React website to watch Youtube videos TOGETHER</h4>
+          <h5>A React website to watch Youtube videos TOGETHER</h5>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <div className="chatwindow-container">
+          <Chatwindow />
+        </div>
       </div>
-      <div className="chatwindow">
-      <Chatwindow />
-      </div>
+      
     );
   }
 }

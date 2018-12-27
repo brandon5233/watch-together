@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Chatwindow.css'
 import Button from '@material-ui/core/Button';
 
@@ -6,99 +6,103 @@ import Button from '@material-ui/core/Button';
 const style = {
     marginLeft: '20px',
     marginTop: '5px',
-  };
+};
 
 
-class Textbox extends Component{
-    constructor(props){
+class Textbox extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            inputvalue:"",
+            inputvalue: "",
             isnull: true
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event){
+    handleChange(event) {
         let isnull = true;
-        if(event.target.value){
+        if (event.target.value) {
             isnull = !isnull;
         }
         this.setState({
             inputvalue: event.target.value,
-            isnull : isnull
+            isnull: isnull
         });
     }
 
-    handleSubmit(event){
+    handleSubmit(event) {
         this.props.addtext(this.state.inputvalue);
         event.preventDefault();
         this.setState({
-            inputvalue:"",
+            inputvalue: "",
             isnull: true
         });
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="textwrapper">
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Type a message" className="inputtext" type="text" value ={this.state.inputvalue} onChange={this.handleChange}/>
+                    <input placeholder="Type a message" className="inputtext" type="text" value={this.state.inputvalue} onChange={this.handleChange} />
                     <Button disabled={this.state.isnull} style={style} variant="contained" className="button" type="submit" color='primary' >
                         Send
                     </Button>
-                    
+
                 </form>
             </div>
         );
     }
 }
 
-function Textview(props){
-    let arr=props.chathistory.slice();
-    return(
+function Textview(props) {
+    let arr = props.chathistory.slice();
+    return (
         <div className="chathistory">
-            
+
             {
-    arr.reverse().map((value, index) =>  <p key={index} className="chattext">{props.username+":\t"}{value}</p>)
+                arr.reverse().map((value, index) => <p key={index} className="chattext">{props.username + ":\t"}{value}</p>)
             }
         </div>
     );
 }
 
-class Chatwindow extends Component{
-    constructor(props){
+class Chatwindow extends Component {
+    constructor(props) {
         super(props);
         this.addtextfn = this.addtextfn.bind(this);
-        this.state ={
+        this.state = {
             chathistory: [],
             name: "Brandon",
             lastname: "Rozario",
             username: "brandon5233"
         };
     }
-    render(){
-        return(
-            <div className="Chatwindow">
-                <p> chat window goes here </p>
-                <Textview 
-                    chathistory={this.state.chathistory} 
-                    timestamp={new Date()} 
-                    username={this.state.username}/>
-                <Textbox addtext={this.addtextfn} />
+    render() {
+        return (
+            <div className="chatwindow">
+                <p className="chatwindowHeading"> Chat Window </p>
+                <div className="chathistory-container">
+                    <Textview
+                        chathistory={this.state.chathistory}
+                        timestamp={new Date()}
+                        username={this.state.username} />
+                </div>
+                <div className="inputtext">
+                    <Textbox addtext={this.addtextfn} />
+                </div>
             </div>
         );
     }
-    
-    addtextfn(input){
+
+    addtextfn(input) {
         let prevHistory = this.state.chathistory.slice();
         prevHistory.push(input);
         this.setState({
             chathistory: prevHistory,
         });
         console.log(this.state.chathistory)
-    
+
     }
 }
 

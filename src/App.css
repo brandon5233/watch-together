@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  border: 1px solid red;
+  background-color: rgb(41, 41, 41);
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .App-logo {
@@ -12,14 +15,22 @@
 
 .App-header {
   background-color: #222;
-  height: 100px;
-  padding: 20px;
+  height: 9%;
+  padding: 2%px;
   color: white;
 }
 
+.App-header h2{
+  margin: 0px;
+}
+
+.App-header h5{
+  margin: 5px;
+}
+
+
 .App-intro {
   font-size: large;
-  border: 1px solid black;
 }
 
 @keyframes App-logo-spin {
@@ -34,7 +45,7 @@
 
 .NavigationBar{
   height: auto;
-  min-height: 50px;
+  min-height: 8%;
 }
 
 ul{
@@ -63,4 +74,12 @@ li{
 
 .NavigationBar li a:hover{
   background: #222;
+}
+
+.chatwindow-container{
+  height:82.5%;
+  width: 40%;
+  background-color: rgb(172, 166, 166); 
+  float: right;
+
 }
