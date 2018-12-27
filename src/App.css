@@ -5,12 +5,14 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 50px;
+  float: left;
+  margin-left: 2%;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -25,6 +27,40 @@
   to { transform: rotate(360deg); }
 }
 
-.body{
-  height: 420px;
+.Navbar-container{
+  margin:0;
+  padding: 0px;
+}
+
+.NavigationBar{
+  height: auto;
+  min-height: 50px;
+}
+
+ul{
+  height: 50px;
+  background: black;
+  margin:0;
+  padding: 0;
+
+}
+
+li{
+  float: right;
+  height: inherit;
+  width: 20%;
+  width: calc(100%/5);
+  box-sizing: border-box;
+}
+
+
+.NavigationBar a{
+  padding: 15px 0px;
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+
+.NavigationBar li a:hover{
+  background: #222;
 }
