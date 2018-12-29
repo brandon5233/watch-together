@@ -1,5 +1,7 @@
+
 .SignUpFormContainer{
-    background-color: #3b5998;
+    /* background-color: #3b5998; */
+    background-color:  rgb(172, 166, 166);
     overflow: auto;
     padding:20px 50px 10px 20px;
 }

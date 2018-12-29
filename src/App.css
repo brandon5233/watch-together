@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-color: rgb(41, 41, 41);
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .App-logo {
@@ -11,10 +15,19 @@
 
 .App-header {
   background-color: #222;
-  height: 100px;
-  padding: 20px;
+  height: 9%;
+  padding: 2%px;
   color: white;
 }
+
+.App-header h2{
+  margin: 0px;
+}
+
+.App-header h5{
+  margin: 5px;
+}
+
 
 .App-intro {
   font-size: large;
@@ -32,7 +45,7 @@
 
 .NavigationBar{
   height: auto;
-  min-height: 50px;
+  min-height: 8%;
 }
 
 ul{
@@ -61,4 +74,23 @@ li{
 
 .NavigationBar li a:hover{
   background: #222;
+}
+
+.chatwindow-container{
+  height:82%;
+  width: 40%;
+  background-color: rgb(172, 166, 166); 
+  float: right;
+  padding: 0% 0%;
+  margin: 2px;
+}
+
+.YoutubePlayerContainer{
+  width: 50%;
+  height: 75%;
+  min-width: 300px;
+  min-height: 150px;
+  margin: 2% 0% 0% 5%;
+  overflow: hidden;
+  position: relative;
 }
