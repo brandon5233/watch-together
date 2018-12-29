@@ -73,7 +73,7 @@ class SignUpForm extends Component{
         password1 !== password2 ||
         password1 === '' ||
         email === '' ||
-        username === '';
+        {/*username === ''*/};
 
         return(
             <div className="SignUpForm">
