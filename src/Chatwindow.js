@@ -14,7 +14,7 @@ class Textbox extends Component {
         super(props);
         this.state = {
             inputvalue: "",
-            isnull: true
+            isnull: true,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +32,7 @@ class Textbox extends Component {
     }
 
     handleSubmit(event) {
-        this.props.addtext(this.state.inputvalue);
+        this.props.addtext(this.state.inputvalue, this.props.username);
         event.preventDefault();
         this.setState({
             inputvalue: "",
@@ -44,7 +44,7 @@ class Textbox extends Component {
         return (
             <div className="textwrapper">
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Type a message" className="inputtext" type="text" value={this.state.inputvalue} onChange={this.handleChange} />
+                    <input disabled={this.props.isInputDisabled} placeholder="Type a message" className="inputtext" type="text" value={this.state.inputvalue} onChange={this.handleChange} />
                     <Button disabled={this.state.isnull} style={style} variant="contained" className="button" type="submit" color='primary' >
                         Send
                     </Button>
@@ -61,7 +61,7 @@ function Textview(props) {
         <div className="chathistory">
 
             {
-                arr.reverse().map((value, index) => <p key={index} className="chattext">{props.username + ":\t"}{value}</p>)
+                arr.reverse().map((value, index) => <p key={index} className="chattext">{value}</p>)
             }
         </div>
     );
@@ -73,12 +73,12 @@ class Chatwindow extends Component {
         this.addtextfn = this.addtextfn.bind(this);
         this.state = {
             chathistory: [],
-            name: "Brandon",
-            lastname: "Rozario",
-            username: "brandon5233"
         };
     }
     render() {
+
+        const isInputDisabled = (this.props.username)?false:true;
+
         return (
             <div className="chatwindow">
                 <p className="chatwindowHeading"> Chat Window </p>
@@ -86,18 +86,21 @@ class Chatwindow extends Component {
                     <Textview
                         chathistory={this.state.chathistory}
                         timestamp={new Date()}
-                        username={this.state.username} />
+                       />
                 </div>
                 <div className="inputtext">
-                    <Textbox addtext={this.addtextfn} />
+                    <Textbox 
+                        addtext={this.addtextfn} 
+                        username={this.props.username}
+                        isInputDisabled={isInputDisabled} />
                 </div>
             </div>
         );
     }
 
-    addtextfn(input) {
+    addtextfn(input, username) {
         let prevHistory = this.state.chathistory.slice();
-        prevHistory.push(input);
+        prevHistory.push(username + ":\t" + input);
         this.setState({
             chathistory: prevHistory,
         });

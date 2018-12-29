@@ -46,7 +46,7 @@ class App extends Component {
         </div>
 
         <div className="chatwindow-container">
-          <Chatwindow setSrc={this.ChangeSrc} />
+          <Chatwindow setSrc={this.ChangeSrc} username={this.state.username}/>
         </div>
 
         <div className="YoutubePlayerContainer">
