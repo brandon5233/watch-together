@@ -54,7 +54,14 @@ class Navigation extends Component{
         </ul>
 
       
-        <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route exact path={ROUTES.SIGN_UP} 
+          render={()=>
+            <SignUpPage 
+            setUsername={this.props.setUsername} 
+            SignInToggle={this.SignInToggle} /> 
+          }
+        />
+
         <Route exact path={ROUTES.SIGN_IN} 
           render={()=>
             <SignInPage 
