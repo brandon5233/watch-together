@@ -77,9 +77,20 @@ li{
 }
 
 .chatwindow-container{
-  height:82.5%;
+  height:82%;
   width: 40%;
   background-color: rgb(172, 166, 166); 
   float: right;
+  padding: 0% 0%;
+  margin: 2px;
+}
 
+.YoutubePlayerContainer{
+  width: 50%;
+  height: 75%;
+  min-width: 300px;
+  min-height: 150px;
+  margin: 2% 0% 0% 5%;
+  overflow: hidden;
+  position: relative;
 }

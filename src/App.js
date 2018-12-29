@@ -4,13 +4,14 @@ import './App.css';
 import Chatwindow from './Chatwindow';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navigation from './Navigation.js';
-
+import YoutubePlayer from './youtube-player'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ''
+      username: '',
+      src : ""
     }
   }
 
@@ -18,6 +19,12 @@ class App extends Component {
     console.log("setting username to " + newName);
     this.setState({
       username: newName
+    });
+  }
+
+  ChangeSrc = (NewSrc) => {
+    this.setState({
+      src : NewSrc
     });
   }
 
@@ -39,8 +46,13 @@ class App extends Component {
         </div>
 
         <div className="chatwindow-container">
-          <Chatwindow />
+          <Chatwindow setSrc={this.ChangeSrc} />
         </div>
+
+        <div className="YoutubePlayerContainer">
+          <YoutubePlayer src={this.state.src} />
+        </div>
+
       </div>
       
     );
