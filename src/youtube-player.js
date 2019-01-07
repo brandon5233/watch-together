@@ -10,7 +10,8 @@ function RenderPLayer(props) {
         frameBorder="0"
         enablejsapi="true"
         allow="autoplay"
-        allowFullScreen></iframe>
+        allowFullScreen
+        ></iframe>
     </div>
     );
 }
@@ -29,7 +30,9 @@ class YoutubePlayer extends Component{
     }
 
     render(){
+        console.log("src:"+ this.props.src);
         return(
+            
             <div className="PlayerComponent" >
                 { (this.props.src)?<RenderPLayer src={this.props.src}/>:<RenderWelcome/> }
             </div>

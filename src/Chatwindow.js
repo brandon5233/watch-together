@@ -134,7 +134,7 @@ class Chatwindow extends Component {
 
     checkForLink(input){
         const url = input.split('.');
-        if(url.length>2 && url[1].includes("yout")){
+        if((url.length>2 && url[1].includes("yout")) || (url.length>1 && url[0].includes("yout")) ) {
             return true;
         }
         else{
