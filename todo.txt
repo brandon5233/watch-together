@@ -4,3 +4,6 @@ change background color of signout form.
 add support for youtu.be links.
 add support for youtube playlists.
 add feature: commands from the chat box control the player.
+
+Add Rooms:
+Add (create room), (go to room) in the navbar.
