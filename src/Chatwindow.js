@@ -31,7 +31,7 @@ class Textbox extends Component {
     }
 
     handleSubmit(event) {
-        this.props.addtext(this.state.inputvalue, this.props.username);
+        this.props.sendMessage(this.state.inputvalue)
         event.preventDefault();
         this.setState({
             inputvalue: "",
@@ -89,11 +89,7 @@ class Textview extends Component {
 }
 
 class Chatwindow extends Component {
-    constructor(props) {
-        super(props);
-        this.addtextfn = this.addtextfn.bind(this);
-       
-    }
+
     render() {
         
         const isInputDisabled = (this.props.username)?false:true;
@@ -109,32 +105,14 @@ class Chatwindow extends Component {
                 </div>
                 <div className="inputtext">
                     <Textbox 
-                        addtext={this.addtextfn} 
-                        username={this.props.username}
+                        sendMessage={this.props.sendMessage}
                         isInputDisabled={isInputDisabled} />
                 </div>
             </div>
         );
     }
 
-    addtextfn(input, username) {
-        let prevHistory = this.state.chathistory.slice();
-        prevHistory.push(username + ":\t" + input);
-        this.setState({
-            chathistory: prevHistory,
-        });
-       
-        //const checkForLink = input.split('.')
-
-        if(this.checkForLink(input)){
-            console.log("link found");
-            const embedURL = this.convertToEmbedURL(input);
-            this.props.setSrc(embedURL);
-        }
-        console.log(this.state.chathistory)
-
-    }
-
+  
     /*
     use a regex to better this function
     checkForLink(input){
@@ -147,22 +125,7 @@ class Chatwindow extends Component {
         }
     }*/
 
-    checkForLink(input){
-        const url = input.split('.');
-        if((url.length>2 && url[1].includes("yout")) || (url.length>1 && url[0].includes("yout")) ) {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    convertToEmbedURL(input){
-        let embedURL = input.replace('watch?v=', 'embed/')
-        //embedURL = embedURL + '?autoplay=1';
-        embedURL+='?autoplay=1';
-        return embedURL;
-    }
+   
 
 
 

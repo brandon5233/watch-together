@@ -15,7 +15,7 @@ class App extends Component {
       username: '',
       src : "",
       isOpen:false,
-      chathistory : [{"from":"brandon", "message":"hi there"}]
+      chathistory : []
     }
     console.log("app-chathistory: " + util.inspect(this.state.chathistory));
     this.initConnection();
@@ -37,13 +37,17 @@ class App extends Component {
 
   sendMessage = (msg) => {
     if(this.state.isOpen){
-      this.sendMessage();
+      var newMessage = {
+        "from":this.state.username,
+        "message":msg
+      }
+      this.websocket.send(JSON.stringify(newMessage));
       console.log("MSG SENT !");
     }   
   }
   
   setHistory = (newchathistory) => {
-    this.setState({chathistory : (newchathistory)});
+    this.setState({chathistory : newchathistory});
     console.log("app-chathistory changed to:" + util.inspect(this.state.chathistory));
   }
 
@@ -52,7 +56,6 @@ class App extends Component {
   this.websocket.onopen = () => {
     console.log("websocket has been opened");
     this.setState({isOpen:true});
-    
   }
 
     //onMessage
@@ -60,14 +63,20 @@ class App extends Component {
       console.log("message received");
       console.log("message:" + util.inspect(JSON.parse(serverResponse.data).data));
       const msg = JSON.parse(serverResponse.data);
+      console.log("type: " + msg.type);
       if(msg.type == 'chathistory'){
         console.log("setting history");
         this.setHistory(msg.data);
       }
-      if(msg.type == 'initial'){
-
-      }
       if(msg.type == 'message'){
+        var oldHistory = this.state.chathistory;
+        oldHistory.push(msg.data);
+        this.setState({chathistory: oldHistory});
+      }
+      if(msg.type == 'youtubelink'){
+        this.ChangeSrc(msg.data);
+      }
+      if(msg.type == 'initial'){
 
       }
       if(msg.type == 'error'){
@@ -110,7 +119,12 @@ class App extends Component {
         </div>
 
         <div className="chatwindow-container">
-          <Chatwindow setSrc={this.ChangeSrc} username={this.state.username} chathistory={this.state.chathistory}/>
+          <Chatwindow 
+          setSrc={this.ChangeSrc} 
+          username={this.state.username} 
+          chathistory={this.state.chathistory}
+          sendMessage={this.sendMessage}
+          />
         </div>
 
         <div className="YoutubePlayerContainer">
