@@ -7,6 +7,7 @@ class CreateRoom extends Component{
         this.state = {
             newRoomName:'',
             isDisabled:true,
+            error:''
         };
     }
 
@@ -24,8 +25,11 @@ class CreateRoom extends Component{
                             autoFocus="true"
                             />
                             <button disabled={this.state.isDisabled} type="submit">Create!</button>
+                            {/*replace css class with proper class, not SignInError */}
+                            {this.state.error && <p className="SignInError">{this.state.error}</p>}
                     </form>
-                </div>
+                    </div>
+                  
                 </div>
                 
         );
@@ -36,7 +40,7 @@ class CreateRoom extends Component{
     }
 
     handleChange = event => {
-        const isDisabled = event.target.value==''?true:false;
+        const isDisabled = event.target.value ===''?true:false;
         this.setState({newRoomName:event.target.value, isDisabled:isDisabled});
         
     }

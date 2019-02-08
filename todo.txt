@@ -7,3 +7,5 @@ add feature: commands from the chat box control the player.
 
 Add Rooms:
 Add (create room), (go to room) in the navbar.
+
+add error if ws cannot connect.

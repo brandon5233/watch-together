@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Chatwindow.css'
 import Button from '@material-ui/core/Button';
-
-
+const util = require('util');
 const style = {
     marginLeft: '20px',
     marginTop: '5px',
@@ -59,36 +58,52 @@ class Textbox extends Component {
     }
 }
 
-function Textview(props) {
-    let arr = props.chathistory.slice();
-    return (
-        <div className="chathistory">
+class Textview extends Component {
 
-            {
-                arr.reverse().map((value, index) => <p key={index} className="chattext">{value}</p>)
-            }
+    render(){
+        let arr = this.props.chathistory.slice();
+    return (
+        <div className="chathistory" >
+            <div >
+                {
+                    arr.map((value, index) => <p key={index} className="chattext">{value.from}: {value.message}</p>)
+                }
+            </div>
+            <div ref={(endRef) => {this.messageEnd = endRef;}}>
+            </div>
         </div>
     );
+    }
+    
+    scrollToEnd = () => {
+        this.messageEnd.scrollIntoView({behavior:"smooth"})
+    }
+
+    componentDidMount(){
+        this.scrollToEnd();
+        console.log("SCROLLED !!");
+    }
+    componentDidUpdate(){
+        this.scrollToEnd();
+    }
 }
 
 class Chatwindow extends Component {
     constructor(props) {
         super(props);
         this.addtextfn = this.addtextfn.bind(this);
-        this.state = {
-            chathistory: [],
-        };
+       
     }
     render() {
-
+        
         const isInputDisabled = (this.props.username)?false:true;
-
+        console.log("chat-chathistory: " + util.inspect(this.props.chathistory));
         return (
             <div className="chatwindow">
                 <p className="chatwindowHeading"> Chat Window </p>
                 <div className="chathistory-container">
                     <Textview
-                        chathistory={this.state.chathistory}
+                        chathistory={this.props.chathistory}
                         timestamp={new Date()}
                        />
                 </div>
@@ -109,7 +124,7 @@ class Chatwindow extends Component {
             chathistory: prevHistory,
         });
        
-        const checkForLink = input.split('.')
+        //const checkForLink = input.split('.')
 
         if(this.checkForLink(input)){
             console.log("link found");
@@ -144,9 +159,12 @@ class Chatwindow extends Component {
 
     convertToEmbedURL(input){
         let embedURL = input.replace('watch?v=', 'embed/')
-        embedURL = embedURL + '?autoplay=1';
+        //embedURL = embedURL + '?autoplay=1';
+        embedURL+='?autoplay=1';
         return embedURL;
     }
+
+
 
 }
 

@@ -1,4 +1,4 @@
-import React, {component, Component} from 'react';
+import React, {Component} from 'react';
 import './youtube-player.css'
 
 
@@ -25,12 +25,9 @@ function RenderWelcome(props){
 }
 
 class YoutubePlayer extends Component{
-    constructor(props){
-        super(props);
-    }
-
+   
     render(){
-        console.log("src:"+ this.props.src);
+        console.log("youtube-component-src:"+ this.props.src);
         return(
             
             <div className="PlayerComponent" >

@@ -3,7 +3,7 @@ import {FirebaseContext} from './firebase'
 import { withRouter, Link } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
 import './signup.css'
-
+/* eslint-disable */ 
 class SignUpPage extends Component{
    
     render(){
@@ -80,7 +80,7 @@ class SignUpForm extends Component{
         password1 !== password2 ||
         password1 === '' ||
         email === '';
-        {/*username === ''*/}
+        /*username === ''*/
 
         return(
             <div className="SignUpForm">
