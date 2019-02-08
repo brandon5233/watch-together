@@ -3,14 +3,19 @@ import {FirebaseContext} from './firebase'
 import { withRouter, Link } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
 import './signup.css'
-
+/* eslint-disable */ 
 class SignUpPage extends Component{
    
     render(){
         return(
             <div className="SignUpFormContainer">
                 <FirebaseContext.Consumer>
-                {firebase =><RoutableSignUpForm firebase={firebase}/>}
+                {firebase =>
+                    <RoutableSignUpForm 
+                    firebase={firebase} 
+                    setUsername={this.props.setUsername} 
+                    SignInToggle={this.props.SignInToggle}/>
+                }
                 </FirebaseContext.Consumer>
             </div>
         );
@@ -48,6 +53,8 @@ class SignUpForm extends Component{
         .doCreateUserWithEmailAndPassword(email, password1)
         .then(authUser => {
             this.setState({ ...INITIAL_STATE });
+            this.props.setUsername(email);
+            this.props.SignInToggle();
             this.props.history.push(ROUTES.LANDING); 
           })
         .catch(error => {
@@ -72,8 +79,8 @@ class SignUpForm extends Component{
         const isInvalid = 
         password1 !== password2 ||
         password1 === '' ||
-        email === '' ||
-        username === '';
+        email === '';
+        /*username === ''*/
 
         return(
             <div className="SignUpForm">

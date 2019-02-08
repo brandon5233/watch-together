@@ -1,0 +1,11 @@
+hide header when sign in is clicked.
+change light gray to slightly darker color.
+change background color of signout form.
+add support for youtu.be links.
+add support for youtube playlists.
+add feature: commands from the chat box control the player.
+
+Add Rooms:
+Add (create room), (go to room) in the navbar.
+
+add error if ws cannot connect.
