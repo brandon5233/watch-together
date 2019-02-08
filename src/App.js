@@ -20,7 +20,7 @@ class App extends Component {
     console.log("app-chathistory: " + util.inspect(this.state.chathistory));
     this.initConnection();
   }
-  websocket = new WebSocket('ws://0.0.0.0:8000');
+  websocket = new WebSocket('ws://youtubechatapp-server.herokuapp.com');
   
   setUsername = (newName) => {
     console.log("setting username to " + newName);
