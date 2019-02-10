@@ -53,7 +53,7 @@ class App extends Component {
 
   initConnection(){
 
-    websocket = new WebSocket('ws://youtubechatapp-server.herokuapp.com');
+    let websocket = new WebSocket('ws://youtubechatapp-server.herokuapp.com');
 
   this.websocket.onopen = () => {
     console.log("websocket has been opened");
