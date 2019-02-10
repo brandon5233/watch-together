@@ -101,6 +101,7 @@ class App extends Component {
 
     this.websocket.onclose = () => {
       this.setState({isOpen:false});
+      initConnection();
     }
    }
 
