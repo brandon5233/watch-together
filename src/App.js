@@ -18,10 +18,9 @@ class App extends Component {
       chathistory : []
     }
     console.log("app-chathistory: " + util.inspect(this.state.chathistory));
-    websocket = new WebSocket('ws://youtubechatapp-server.herokuapp.com');
     this.initConnection();
   }
-  
+  websocket = new WebSocket('ws://youtubechatapp-server.herokuapp.com');
   
   setUsername = (newName) => {
     console.log("setting username to " + newName);
@@ -53,8 +52,6 @@ class App extends Component {
   }
 
   initConnection(){
-
-
 
   this.websocket.onopen = () => {
     console.log("websocket has been opened");
@@ -102,7 +99,6 @@ class App extends Component {
 
     this.websocket.onclose = () => {
       this.setState({isOpen:false});
-      initConnection();
     }
    }
 
