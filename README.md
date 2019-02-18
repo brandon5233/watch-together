@@ -7,5 +7,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 See it in action at [http://youtubechatapp.herokuapp.com](http://youtubechatapp.herokuapp.com)
 
 ## Technologies
--React.js
+-React.js  
 -Heroku (hosting)
